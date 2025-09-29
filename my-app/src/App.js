@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 import MainDashboard from './components/MainDashboard';
-import { FaBars } from 'react-icons/fa';
+import CreateUserForm from './components/CreateUserForm';
+import CreatePollForm from './components/CreatePollForm';
+import CreateSurveyForm from './components/CreateSurveyForm';
+import ComplaintsList from './components/ComplaintsList';
+import NotificationsList from './components/NotificationsList';
+import Settings from './components/Settings';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,25 +18,25 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      
-      {/* Header and Main Content */}
-      <div className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'lg:ml-64' : 'ml-0 lg:ml-64'}`}>
-        {/* Header with Hamburger and User Icon */}
-        <div className="bg-white shadow-md p-4 flex items-center">
-          <button className="lg:hidden text-gray-800 mr-4" onClick={toggleSidebar}>
-            <FaBars size={24} />
-          </button>
-          <div className="flex-1"></div> {/* Spacer to push user icon right */}
-          <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-            <span className="text-xl">👤</span>
-          </div>
+    <Router>
+      <div className="flex min-h-screen">
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <div className="flex-1 flex flex-col lg:ml-64">
+          <Header toggleSidebar={toggleSidebar} />
+          <main className="flex-1 p-4 bg-gray-100 overflow-y-auto">
+            <Routes>
+              <Route path="/" element={<MainDashboard />} />
+              <Route path="/create-user" element={<CreateUserForm />} />
+              <Route path="/create-poll" element={<CreatePollForm />} />
+              <Route path="/create-survey" element={<CreateSurveyForm />} />
+              <Route path="/complaints" element={<ComplaintsList />} />
+              <Route path="/notifications" element={<NotificationsList />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
+          </main>
         </div>
-        <MainDashboard />
       </div>
-    </div>
+    </Router>
   );
 }
 

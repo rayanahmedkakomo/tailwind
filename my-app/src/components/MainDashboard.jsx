@@ -111,7 +111,7 @@ function MainDashboard() {
   };
 
   const pieData = {
-    labels: ['Category A', 'Category B', 'Category C'],
+    labels: ['Health', 'Education', 'Defences'],
     datasets: [
       {
         data: [300, 150, 100],
@@ -124,7 +124,7 @@ function MainDashboard() {
     labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
     datasets: [
       {
-        label: 'Activity Heatmap',
+        label: 'Citizen Engagement Heatmap',
         data: [
           [1, 10], [1, 20], [1, 30], [1, 40], [1, 50],
           [2, 15], [2, 25], [2, 35], [2, 45], [2, 55],
@@ -190,13 +190,13 @@ function MainDashboard() {
       {/* Third Row: Bar and Pie Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6 max-w-full">
         <div className="bg-white shadow-md rounded-lg p-4 w-full">
-          <h2 className="text-lg font-semibold mb-2">Activity Bar Chart</h2>
+          <h2 className="text-lg font-semibold mb-2">Complaints Chart</h2>
           <div className="h-64 sm:h-48 w-full">
             <Bar data={barData} options={chartOptions} />
           </div>
         </div>
         <div className="bg-white shadow-md rounded-lg p-4 w-full">
-          <h2 className="text-lg font-semibold mb-2">Category Pie Chart</h2>
+          <h2 className="text-lg font-semibold mb-2">Ministries Responsiveness</h2>
           <div className="h-64 sm:h-48 w-full">
             <Pie data={pieData} options={chartOptions} />
           </div>

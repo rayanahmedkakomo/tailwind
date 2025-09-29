@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaCog } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Sidebar({ isOpen, toggleSidebar }) {
   return (
@@ -8,22 +9,43 @@ function Sidebar({ isOpen, toggleSidebar }) {
         isOpen ? 'translate-x-0' : '-translate-x-full'
       } lg:translate-x-0 z-50`}
     >
-      {/* Hamburger Icon for Small Screens */}
-      <div className="lg:hidden mb-4">
-        <button onClick={toggleSidebar} className="text-white">
-          <FaBars size={24} />
-        </button>
+      {/* Top Section: Hamburger, Org Name, and Most Buttons */}
+      <div>
+        {/* Hamburger Icon for Small Screens */}
+        <div className="lg:hidden mb-4">
+          <button onClick={toggleSidebar} className="text-white">
+            <FaBars size={24} />
+          </button>
+        </div>
+        {/* Org Name */}
+        <h1 className="text-2xl font-bold mb-8">Rayan Tailwind</h1>
+        {/* Buttons */}
+        <Link to="/" className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded block text-center">
+          Home
+        </Link>
+        <Link to="/create-user" className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded block text-center">
+          Create User
+        </Link>
+        <Link to="/create-poll" className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded block text-center">
+          Create Poll
+        </Link>
+        <Link to="/create-survey" className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded block text-center">
+          Create Survey
+        </Link>
+        <Link to="/complaints" className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded block text-center">
+          Complaints
+        </Link>
+        <Link to="/notifications" className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded block text-center">
+          Notifications
+        </Link>
       </div>
-      {/* Org Name */}
-      <h1 className="text-2xl font-bold mb-8">Rayan Tailwind</h1>
-      {/* Buttons */}
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Home</button>
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Users</button>
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Settings</button>
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Reports</button>
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Analytics</button>
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Notifications</button>
-      <button className="mb-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded">Logout</button>
+      {/* Bottom Section: Settings Button */}
+      <div className="mt-auto">
+        <Link to="/settings" className="py-2 px-4 flex items-center text-white hover:text-gray-300">
+          <FaCog size={20} className="mr-2" />
+          Settings
+        </Link>
+      </div>
     </div>
   );
 }
