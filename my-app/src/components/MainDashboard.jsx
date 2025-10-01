@@ -141,6 +141,21 @@ function MainDashboard() {
     ],
   };
 
+  const ugandaHeatmapData = {
+    labels: ['Central', 'Eastern', 'Northern', 'Western'],
+    datasets: [
+      {
+        label: 'Regional Engagement Heatmap',
+        data: [85, 70, 60, 90], // Mock engagement scores
+        backgroundColor: (ctx) => {
+          const value = ctx.dataset.data[ctx.dataIndex];
+          const intensity = value / 100;
+          return `rgba(3, 89, 174, ${intensity})`;
+        },
+      },
+    ],
+  };
+
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -152,8 +167,8 @@ function MainDashboard() {
     maintainAspectRatio: false,
     indexAxis: 'y',
     scales: {
-      x: { title: { display: true, text: 'Time' } },
-      y: { title: { display: true, text: 'Day' } },
+      x: { title: { display: true, text: 'Engagement Score' } },
+      y: { title: { display: true, text: 'Region' } },
     },
     plugins: { legend: { display: false } },
   };
@@ -203,11 +218,19 @@ function MainDashboard() {
         </div>
       </div>
 
-      {/* Fourth Row: Heatmap */}
-      <div className="bg-white shadow-md rounded-lg p-4 w-full">
+      {/* Fourth Row: Activity Heatmap */}
+      <div className="bg-white shadow-md rounded-lg p-4 w-full mb-6">
         <h2 className="text-lg font-semibold mb-2">Activity Heatmap</h2>
         <div className="h-64 sm:h-48 w-full">
           <Bar data={heatmapData} options={heatmapOptions} />
+        </div>
+      </div>
+
+      {/* Fifth Row: Uganda Regional Heatmap */}
+      <div className="bg-white shadow-md rounded-lg p-4 w-full">
+        <h2 className="text-lg font-semibold mb-2">Uganda Regional Engagement Heatmap</h2>
+        <div className="h-64 sm:h-48 w-full">
+          <Bar data={ugandaHeatmapData} options={heatmapOptions} />
         </div>
       </div>
     </div>

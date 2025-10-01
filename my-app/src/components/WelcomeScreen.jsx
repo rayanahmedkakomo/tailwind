@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaComment } from 'react-icons/fa';
+import Chatbot from './Chatbot';
 
 function WelcomeScreen() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatMaximized, setIsChatMaximized] = useState(false);
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+    if (isChatOpen) setIsChatMaximized(false); // Reset maximize when closing
+  };
+
+  const toggleMaximize = () => {
+    setIsChatMaximized(!isChatMaximized);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       {/* Go to Dashboard Button (Top-Right) */}
@@ -14,6 +27,24 @@ function WelcomeScreen() {
           Go to Dashboard
         </Link>
       </div>
+
+      {/* Message Button (Bottom-Right) */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <button
+          onClick={toggleChat}
+          className="h-12 w-12 md:h-10 md:w-10 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 flex items-center justify-center"
+        >
+          <FaComment size={28} />
+        </button>
+      </div>
+
+      {/* Chatbot Component */}
+      <Chatbot
+        isOpen={isChatOpen}
+        isMaximized={isChatMaximized}
+        toggleChat={toggleChat}
+        toggleMaximize={toggleMaximize}
+      />
 
       {/* Welcome Message Header */}
       <header className="bg-gray-800 text-white text-center py-8">
