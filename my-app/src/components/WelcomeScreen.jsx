@@ -18,15 +18,33 @@ function WelcomeScreen() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
-      {/* Go to Dashboard Button (Top-Right) */}
-      <div className="fixed top-4 right-4 z-50">
-        <Link
-          to="/dashboard"
-          className="py-2 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-lg font-semibold"
-        >
-          Go to Dashboard
-        </Link>
-      </div>
+      {/* Header with Navigation Buttons */}
+      <header className="bg-indigo-600 text-white text-center py-8">
+        <div className="flex justify-end max-w-6xl mx-auto px-4">
+          <div className="flex space-x-4">
+            <Link
+              to="/signup"
+              className="py-2 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-lg font-semibold border border-white"
+            >
+              Sign Up
+            </Link>
+            <Link
+              to="/login"
+              className="py-2 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-lg font-semibold border border-white"
+            >
+              Log In
+            </Link>
+            <Link
+              to="/dashboard"
+              className="py-2 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-lg font-semibold border border-white"
+            >
+              Go to Dashboard
+            </Link>
+          </div>
+        </div>
+        <h1 className="text-4xl font-bold mt-4">Welcome to Rayan Tailwind!</h1>
+        <p className="text-xl mt-2">Your trusted platform for polls, surveys, and citizen engagement.</p>
+      </header>
 
       {/* Message Button (Bottom-Right) */}
       <div className="fixed bottom-4 right-4 z-50">
@@ -45,12 +63,6 @@ function WelcomeScreen() {
         toggleChat={toggleChat}
         toggleMaximize={toggleMaximize}
       />
-
-      {/* Welcome Message Header */}
-      <header className="bg-gray-800 text-white text-center py-8">
-        <h1 className="text-4xl font-bold">Welcome to Rayan Tailwind!</h1>
-        <p className="text-xl mt-2">Your trusted platform for polls, surveys, and citizen engagement.</p>
-      </header>
 
       {/* Hero Section */}
       <section className="bg-white py-12">

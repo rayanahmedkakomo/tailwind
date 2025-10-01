@@ -10,6 +10,8 @@ import CreateSurveyForm from './components/CreateSurveyForm';
 import ComplaintsList from './components/ComplaintsList';
 import NotificationsList from './components/NotificationsList';
 import Settings from './components/Settings';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -36,6 +38,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<WelcomeScreen />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<MainDashboard />} />
           <Route path="/create-user" element={<CreateUserForm />} />
